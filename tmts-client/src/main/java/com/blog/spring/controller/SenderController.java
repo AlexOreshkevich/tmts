@@ -1,27 +1,23 @@
 package com.blog.spring.controller;
 
+import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
-import javax.jms.JMSException;
+import javax.jms.DeliveryMode;
+import javax.jms.Destination;
+import javax.jms.MessageProducer;
+import javax.jms.Session;
+import javax.jms.TextMessage;
 
+import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.jms.Connection;
-import javax.jms.DeliveryMode;
-import javax.jms.Destination;
-import javax.jms.MessageProducer;
-import javax.jms.Session;
-import javax.jms.TextMessage;
-import org.apache.activemq.ActiveMQConnection;
-import org.apache.activemq.ActiveMQConnectionFactory;
-
 import com.blog.spring.jms.TestMessageSender;
 
 @Controller
-@RequestMapping("/hello")
 public class SenderController {
 
 	static int cntr = 0;
@@ -29,14 +25,20 @@ public class SenderController {
 	@Autowired
 	private TestMessageSender service;
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String printHello(ModelMap model) throws Exception {
+	@RequestMapping(value = "/hello", method = RequestMethod.GET)
+	public String printHello(ModelMap model) {
 
-		String sendedMessage = "Хуй от SERVLET MESSAGE " + ++cntr;
-		model.addAttribute("message", sendedMessage);
-		assert service != null;
-		doSendMessage(sendedMessage);
-		return "hello";
+		try {
+			String sendedMessage = "Hello от SERVLET MESSAGE " + ++cntr;
+			model.addAttribute("message", sendedMessage);
+			assert service != null;
+			doSendMessage(sendedMessage);
+			return "hello";
+		} catch (Exception e) {
+			model.addAttribute("message", e.getMessage());
+			e.printStackTrace();
+			return e.getMessage();
+		}
 	}
 
 	private void doSendMessage(String _message) throws Exception {
@@ -60,5 +62,10 @@ public class SenderController {
 		producer.send(message);
 		session.close();
 		connection.close();
+	}
+
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String test() {
+		return "test";
 	}
 }
