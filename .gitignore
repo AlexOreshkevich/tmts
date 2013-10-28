@@ -1,6 +1,35 @@
 *.class
 
-# Package Files #
-*.jar
-*.war
-*.ear
+# common ignore
+*~
+MANIFEST.MF
+target/
+
+
+# eclipse specific
+.settings
+.settings/
+.project
+.classpath
+.metadata
+
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+
+# unix specific
+.DS_Store
+/*.*/.DS_Store
+.directory
+
+
+# static plugins
+.pmd
+
+
+# java specific
+*.class
+
+/www-test
+/war

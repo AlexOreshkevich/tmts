@@ -2,22 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
 							 http://maven.apache.org/maven-v4_0_0.xsd">
-	<artifactId>spring-activemq-middleware</artifactId>
 	<modelVersion>4.0.0</modelVersion>
-	<inceptionYear>2011</inceptionYear>
+	<parent>
+		<groupId>pro.redsoft.tmts</groupId>
+		<artifactId>tmts</artifactId>
+		<version>0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>tmts-middleware</artifactId>
 	<packaging>war</packaging>
-	<groupId>com.blog.messsaging</groupId>
-	<version>1.0</version>
 	<properties>
-		<releaseCandidate>1</releaseCandidate>
-		<spring.version>3.1.1.RELEASE</spring.version>
-		<java.version>1.7</java.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<maven.javadoc.reporting.version>2.7</maven.javadoc.reporting.version>
-		<commons.logging.version>1.1.1</commons.logging.version>
-		<log4j.version>1.2.16</log4j.version>
-		<context.path>spring-activemq-middleware</context.path>
+		<context.path>tmts-middleware</context.path>
 	</properties>
 	<build>
 		<resources>
