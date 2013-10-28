@@ -69,7 +69,5 @@
 		<from uri="jms:queue:testQSource" /> <to uri="jms:queue:testQDestination" 
 		/> </route> </camelContext> <camel:camelContext id="camel-client"> <camel:template 
 		id="camelTemplate" /> </camel:camelContext> <bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent"> 
-		<property name="brokerURL" value="tcp://192.168.50.31:61616" /> </bean> -->
-		
-		<!-- 89.175.40.137 -->
+		<property name="brokerURL" value="tcp://54.246.235.163:61616" /> </bean> -->
 </beans>

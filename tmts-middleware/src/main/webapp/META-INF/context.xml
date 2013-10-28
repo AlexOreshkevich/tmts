@@ -6,18 +6,12 @@
 		61616 - this is the default port for ActiveMQ -->
 	<Resource name="jms/mqConnectionFactory" auth="Container"
 		type="org.apache.activemq.ActiveMQConnectionFactory" description="JMS Connection Factory"
-		factory="org.apache.activemq.jndi.JNDIReferenceFactory" brokerURL="tcp://89.175.40.137:61616" />
+		factory="org.apache.activemq.jndi.JNDIReferenceFactory" brokerURL="tcp://54.246.235.163:61616" />
 
 	<!-- This is a reference to the first Queue we defined earlier in the ActiveMQ 
 		admin console -->
 	<Resource name="jms/testQueueOne" auth="Container"
 		type="org.apache.activemq.command.ActiveMQQueue" factory="org.apache.activemq.jndi.JNDIReferenceFactory"
 		physicalName="TestQueueOne" />
-
-	<!-- This is a reference to the second Queue we defined earlier in the ActiveMQ 
-		admin console -->
-	<!-- <Resource name="jms/testQueueTwo" auth="Container" -->
-	<!-- type="org.apache.activemq.command.ActiveMQQueue" factory="org.apache.activemq.jndi.JNDIReferenceFactory" -->
-	<!-- physicalName="TestQueueTwo" /> -->
 
 </Context>

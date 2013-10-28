@@ -75,7 +75,7 @@
 		<camel:template id="camelTemplate" />
 	</camel:camelContext>
 	<bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent">
-		<property name="brokerURL" value="tcp://89.175.40.137:61616" />
+		<property name="brokerURL" value="tcp://54.246.235.163:61616" />
 	</bean>
 
 </beans>

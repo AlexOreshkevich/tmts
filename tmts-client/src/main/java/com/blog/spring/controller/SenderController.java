@@ -9,6 +9,7 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,28 +23,32 @@ public class SenderController {
 
 	static int cntr = 0;
 
+	private static final Logger logger_c = Logger
+			.getLogger(SenderController.class);
+
 	@Autowired
 	private TestMessageSender service;
 
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public String printHello(ModelMap model) {
 
+		logger_c.info("Access printHello...");
+
 		try {
 			String sendedMessage = "Hello от SERVLET MESSAGE " + ++cntr;
 			model.addAttribute("message", sendedMessage);
 			assert service != null;
 			doSendMessage(sendedMessage);
-			return "hello";
 		} catch (Exception e) {
+			logger_c.error("FATAL printHello", e);
 			model.addAttribute("message", e.getMessage());
-			e.printStackTrace();
-			return e.getMessage();
 		}
+		return "hello";
 	}
 
 	private void doSendMessage(String _message) throws Exception {
 		// Create a ConnectionFactory
-		String url = "failover://tcp://192.168.50.31:61616";
+		String url = "failover://tcp://54.246.235.163:61616";
 		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
 				"admin", "admin", url);
 		// Create a Connection
